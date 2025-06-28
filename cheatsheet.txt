@@ -1,0 +1,9 @@
+✅ 🧨 EXAM-NIGHT ONE-LINER CHEATS
+⭐ Binary Search: Sorted array → divide & conquer.
+⭐ Sum of Subset: Backtracking with include/exclude.
+⭐ Graph Coloring: Safe color assign with backtracking.
+⭐ N-Queen: Row-wise placement with diagonal check.
+⭐ Max-Min: Single pass comparison.
+⭐ Floyd-Warshall: All-pairs shortest with DP.
+⭐ Greedy Knapsack: Highest value/weight ratio.
+⭐ Bellman-Ford: Edge relaxation with negative cycle detection.
