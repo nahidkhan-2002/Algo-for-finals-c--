@@ -1,26 +1,24 @@
-/* ✅ Concept:
-👉 Highest value/weight ratio agey.
-👉 Fractional allowed. */
+double fractionalKnapsack(double capacity, vector<Item>& items) {
+    // Step 1: Sort items by value/weight ratio in descending order
+    sort(items.begin(), items.end(), compare);
 
-// Greedy Knapsack
-void greedyKnapsack(int n, float M) {
-    sortItemsByRatio();
-    float total = 0;
-    int i = 1;
+    double totalValue = 0.0; // মোট যেই value আমরা নিইতেছি
+    double currentWeight = 0.0; // এখন পর্যন্ত নেয়া মোট ওজন
 
-    while (i <= n && M > 0) {
-        if (w[i] <= M) {
-            x[i] = 1;
-            M -= w[i];
-            total += p[i];
-        }
+    // Step 2: Loop through sorted items
+    for (int i = 0; i < items.size(); i++) {
+        // যদি সম্পূর্ণ item এর ওজন ব্যাগে ঢুকানো যায়
+        if (currentWeight + items[i].weight <= capacity) {
+            currentWeight += items[i].weight;     // ওজন যোগ করলাম
+            totalValue += items[i].value;         // value যোগ করলাম
+        } 
         else {
-            x[i] = M / w[i];
-            total += x[i] * p[i];
-            M = 0;
+            // Step 3: যদি পুরা item না নেয়া যায়, তাহলে ভাগ করে নিই
+            double remain = capacity - currentWeight; // কতটুকু ওজন বাকী আছে
+            totalValue += (items[i].value / items[i].weight) * remain; // আনুপাতিক value নিই
+            break; // ব্যাগ পূর্ণ হয়ে গেছে
         }
-        i++;
     }
 
-    cout << "Total profit: " << total << endl;
+    return totalValue; // সর্বোচ্চ value যা ব্যাগে নেয়া যায়
 }
